@@ -2244,7 +2244,7 @@ localStorage.comma = "'";
 								localStorage.finish = 0;
 								localStorage.load_hid = load_id;
 							 //---END of Markers for resets, traces and more---//
-							 location.href = '#page2';
+							 
 							 localStorage.load_id_bol = load_id;
 							 //---Last active Load ---// GO directly to last active load checked
 							 localStorage.last_active_load = localStorage.load_id_bol;
@@ -2307,7 +2307,40 @@ localStorage.comma = "'";
 															  'Smith TracknGo',
 															  'Ok');
                             }})
-							
+							//-----------move to page 2_5 if single bol -------------//
+							if(localStorage.active_shipment_counter == '1'){
+												if(localStorage.inactive == 1){
+													}else{
+														if(localStorage.load_hid == localStorage.load_hid_2){
+															}else{
+														   // alert('trace_load activated')
+															trace_load();
+														}
+													}
+												if(localStorage.inactive == 1){}else{
+										//------------
+												unchanged_shipments_load(localStorage.load_id_bol,localStorage.load_number);
+										//------------
+												if ((localStorage.start == 1)){
+														}else{
+													setTimeout(function(){
+														//--- Start location intervals Just Once ---- Mark ----//
+															  localStorage.start = 1;
+															},100);
+														}
+												localStorage.load_hid = localStorage.load_hid_2;
+										//-----------------------------------------	
+												}
+												//----MOVE if there is only one active shipment
+												
+													setTimeout(function(){
+													  bol_details(localStorage.id_load_t,localStorage.bol_number_t,localStorage.pages_number_t,localStorage.origin_sign_t,localStorage.destination_sign_t,localStorage.pickup_lat_t,localStorage.pickup_lng_t,localStorage.drop_lat_t,localStorage.drop_lng_t, localStorage.pick_add_t, localStorage.drop_add_t);
+													  $('#back_change').attr('href','#page1_1');
+													},0);
+											}else{
+								 //----END---  MOVE if there is only one active shipment
+							location.href = '#page2';
+											}
 	    	};
 //-------------------INACTIVE SHIPMENTS LOAD---------------------------//
 		function inactive_shipments_load(load_id,load_number){
@@ -2318,7 +2351,7 @@ localStorage.comma = "'";
 			                  localStorage.inactive = 1;
 				              $('#load_hid').html(load_id);
 							  $('#load_number_hid').html(load_number);
-				              location.href = "#page2";
+				              
 							  //-----------------------
 												 $.ajax({
 												 type: 'POST',
@@ -2376,8 +2409,40 @@ localStorage.comma = "'";
 																  'Smith TracknGo',
 																  'Ok');
 												}})
-								//-------------
-							  
+								//-----------move to page 2_5 if single bol -------------//
+							if(localStorage.active_shipment_counter == '1'){
+												if(localStorage.inactive == 1){
+													}else{
+														if(localStorage.load_hid == localStorage.load_hid_2){
+															}else{
+														   // alert('trace_load activated')
+															trace_load();
+														}
+													}
+												if(localStorage.inactive == 1){}else{
+										//------------
+												unchanged_shipments_load(localStorage.load_id_bol,localStorage.load_number);
+										//------------
+												if ((localStorage.start == 1)){
+														}else{
+													setTimeout(function(){
+														//--- Start location intervals Just Once ---- Mark ----//
+															  localStorage.start = 1;
+															},100);
+														}
+												localStorage.load_hid = localStorage.load_hid_2;
+										//-----------------------------------------	
+												}
+												//----MOVE if there is only one active shipment
+												
+													setTimeout(function(){
+													  bol_details(localStorage.id_load_t,localStorage.bol_number_t,localStorage.pages_number_t,localStorage.origin_sign_t,localStorage.destination_sign_t,localStorage.pickup_lat_t,localStorage.pickup_lng_t,localStorage.drop_lat_t,localStorage.drop_lng_t, localStorage.pick_add_t, localStorage.drop_add_t);
+													  $('#back_change').attr('href','#page1_1');
+													},0);
+											}else{
+								 //----END---  MOVE if there is only one active shipment
+							location.href = '#page2';
+											}
 							          };
 //--------------------UNCHANGED SHIPMENTS----------------------//
 		function unchanged_shipments_load(load_id,load_number){
@@ -2449,12 +2514,13 @@ localStorage.comma = "'";
 											  'Smith TracknGo',
 											  'Ok');
                             }})
+							
 			};
 //------- UPDATE SHIPMENTS (LOAD) ------------//
 
 function update_shipments_load(load_id){
 						 $.mobile.loading("show", {text: 'loading',textVisible: true,theme: 'b',html: '<img src="css/loading.gif" style="width:40%;margin-left: 30%;" />'});
-						location.href = '#page2';
+						
 						$.ajax({
 							 type: 'POST',
 							 async:false,
@@ -2512,6 +2578,7 @@ function update_shipments_load(load_id){
 											  'Smith TracknGo',
 											  'Ok');
                             }})
+							location.href = '#page2';
 };
 		//---------------------------Query DATA From SERVER  -------------------
 			$('#login_phone').click(function(){
@@ -2660,7 +2727,7 @@ function update_shipments_load(load_id){
 					//Show take picture for the shipper
 					$('#shipper_take_picture').show();
 					$('#consignee_take_picture').show();
-				   location.href = "#page2_5";
+				   
                     var latitude_driver = parseFloat($('#latitude').val());//37.55;
                     var longitude_driver = parseFloat($('#longitude').val());//-77.44;
 		    		var id_driver = $('#user_name').val();
@@ -2813,6 +2880,7 @@ function update_shipments_load(load_id){
                             }})
                        
                       //return false;
+					  location.href = "#page2_5";
                 };
 						  
 //----------------------END OF   Map, Distance , Time ------------------------------
@@ -3314,15 +3382,6 @@ $('#page2').on('pageshow',function(e,data){
 		localStorage.load_hid = localStorage.load_hid_2;
 //-----------------------------------------	
 		}
-		//----MOVE if there is only one active shipment
-		if(localStorage.active_shipment_counter == '1'){
-			setTimeout(function(){
-			  bol_details(localStorage.id_load_t,localStorage.bol_number_t,localStorage.pages_number_t,localStorage.origin_sign_t,localStorage.destination_sign_t,localStorage.pickup_lat_t,localStorage.pickup_lng_t,localStorage.drop_lat_t,localStorage.drop_lng_t, localStorage.pick_add_t, localStorage.drop_add_t);
-			  $('#back_change').attr('href','#page1_1');
-			},0);
-			}
-//----END   ---  MOVE if there is only one active shipment
-
 		});
 		
 		//$("select option:contains('Value a')").attr("disabled","disabled")

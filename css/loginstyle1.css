@@ -1,6 +1,12 @@
 @charset "UTF-8";
 /* CSS Document */
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+.ui-loader ui-corner-all ui-body-b ui-loader-verbose{
+	padding: 45% 25% 100%;
+	}
+.the_class{
+	padding: 45% 25% 100%;
+	}
 #shp_sig_options, #cs_sig_options{
 	line-height:2;}
 #aditional_documents{

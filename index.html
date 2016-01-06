@@ -223,6 +223,24 @@ $(document).one('pagebeforecreate', function () {
 							//----UPDATE LOAD ----//
 							var load_subup = load_str.substring(0, 17);
 							if(load_subup == "Changes in load #"){
+								 var load_number = parseFloat(load_subup.substring(17));
+								 $.ajax({
+									 type:POST,
+									 dataType: 'json',
+									 async:false,
+									 url:''+localStorage.base_url+'/load/app_get_load_by_driver/'+localStorage.user_id,
+									 success: function(data){
+										  for(i=0;i<data.length;i++){
+											  if (data[i].load_number == load_number){
+												  localStorage.load_id_bol = data[i].idts_load;
+												  localStorage.load_number = data[i].load_number;
+												  $('#load_number_hid').html(data[i].load_number);
+												  active_shipments_load(data[i].idts_load,data[i].load_number);
+												  };
+											  }
+										 },
+									 error: function(data){},
+									 });
 								 update_shipments_load(localStorage.load_id_bol);
 								}
 							 //----END UPDATE-----//
@@ -404,8 +422,12 @@ $(document).one('pagebeforecreate', function () {
                               </tr>
                           </table>
                          </div>
+                         <div id="header_container3">
+                            <div id="header_load_number3">&nbsp;</div>
+                        </div>
+                         <div style="width:100%; line-height:0.3"><table width="100%"><tr><td width="50%"><img id="active_ld" src="css/active_active.png" width="100%"></td><td width=50%><img id="history_ld" src="css/history_inactive.png" width="100%"></td></tr></table></div>
                  </div>
-                        <div style="width:100%"><table width="100%"><tr><td width="50%"><img id="active_ld" src="css/active_active.png" width="100%"></td><td width=50%><img id="history_ld" src="css/history_inactive.png" width="100%"></td></tr></table></div>
+                        
                     	<div role="listpage" class="ui-content" id="lol">
                         <table width="100%" id="lol_item"></table>
                         <table id="lol_item_inactive"></table>
@@ -433,8 +455,9 @@ $(document).one('pagebeforecreate', function () {
                       <div id="header_container2">
                         <div id="header_load_number2">&nbsp;_</div>
                      </div>
+                      <div style="width:100%; line-height:0.3"><table width="100%"><tr><td width="10%"><a href="#page1_1" id="" class=""><img width="100%" src="css/back_pic.png"></a></td><td width="30%"><img id="active_shp" src="css/active_shipments.png" width="100%"></td><td width=40%><!--<img id="history_shp" src="css/history_inactive.png" width="100%">--></td></tr></table></div>
                  </div>
-                        <div style="width:100%"><table width="100%"><tr><td width="12%"><a href="#page1_1" id="" class=""><img width="100%" src="css/back_pic.png"></a></td><td width="30%"><img id="active_shp" src="css/active_shipments.png" width="100%"></td><td width=40%><!--<img id="history_shp" src="css/history_inactive.png" width="100%">--></td></tr></table></div>
+                       
                     	<div role="listpage" class="ui-content" id="lol_shipment">
                         <table width="100%" id="lol_item_shipment"></table>
                         <table id="lol_item_shipment_inactive"></table>

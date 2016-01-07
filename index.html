@@ -1708,6 +1708,7 @@ $('#div_document_name').click(function(){
 /*Ask if already started sening trace */if(localStorage.start == 1){
 												//alert('localstorage start = 1')
 													}else{
+														localStorage.load_id_trace = localStorage.load_id_bol;
 														location_trace_interval = setInterval(function(){
 															if(localStorage.trace == 1){
 															navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -1733,6 +1734,7 @@ $('#div_document_name').click(function(){
 					};
 		function trace_load2(){
 			localStorage.trace_load2 = 1;
+						localStorage.load_id_trace = localStorage.load_id_bol;
 						location_trace_interval = setInterval(function(){
 						if(localStorage.trace == 1){
 						navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -1904,7 +1906,7 @@ $('#div_document_name').click(function(){
                     var longi = y;
 					$('#longitude').val(longi); // Use to show location when sending callcheck
 					var name = localStorage.user_id;
-					localStorage.load_id_trace = localStorage.load_id_bol;
+					//localStorage.load_id_trace = localStorage.load_id_bol;
                         $.ajax({
                             type: 'POST',
 							data: {user_lat: lati, user_long: longi, load_id:localStorage.load_id_trace},
@@ -2056,13 +2058,7 @@ localStorage.comma = "'";
 		function active_shipments_load(load_id,load_number){
 			$.mobile.loading("show", {text: 'loading',textVisible: true,theme: 'b',html: '<img src="css/loading.gif" style="width:40%;margin-left: 30%;" />'});
 			              $('#load_number_hid').html(load_number);
-			               //----- After being Closed and Reopened ---//
-						   if(localStorage.tobecontinued == 1){
-							      trace_load2();
-								  //alert('tobecontinued == 1')
-								  localStorage.tobecontinued = 0;
-							   }
-						   //-----------------------------------------//
+			              
 							 localStorage.active_shipment_counter = "";
 				             var active_shipment_counter = 0;
 							//---Markers for resets, traces and more---//
@@ -2075,6 +2071,13 @@ localStorage.comma = "'";
 							 //---END of Markers for resets, traces and more---//
 							 
 							 localStorage.load_id_bol = load_id;
+							  //----- After being Closed and Reopened ---//
+						   if(localStorage.tobecontinued == 1){
+							      trace_load2();
+								  //alert('tobecontinued == 1')
+								  localStorage.tobecontinued = 0;
+							   }
+						   //-----------------------------------------//
 							 //---Last active Load ---// GO directly to last active load checked
 							 localStorage.last_active_load = localStorage.load_id_bol;
 							  //---END of Last active Load ---//

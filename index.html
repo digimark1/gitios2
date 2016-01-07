@@ -2205,9 +2205,15 @@ localStorage.comma = "'";
 														for(i=0;i<data.length;i++){
 															if(data[i].destination_sign == 0){
 																  //Active shipment counter for trace control
-																   active_shipment_counter++;
+																  //active_shipment_counter++;
 																   if(data[i].pages_number>1){pages = ' pages'}else{pages = ' page'}
 																	$("#lol_item_shipment").append('<tr><td>'+data[i].date_created+'</td><td><a href="#" style="color: red;" class="" onclick="bol_details('+data[i].ts_load_idts_load+','+localStorage.comma+data[i].bol_number+localStorage.comma+','+data[i].pages_number+','+data[i].origin_sign+','+data[i].destination_sign+','+data[i].pickup_lat+','+data[i].pickup_lng+','+data[i].drop_lat+','+data[i].drop_lng+','+localStorage.comma+data[i].pickup_address2+localStorage.comma+','+localStorage.comma+data[i].drop_address2+localStorage.comma+')"><h3>'+data[i].bol_number+'</h3></a></td><td>'+data[i].pages_number+pages+'</td></tr>');
+																	
+																}else{
+																	active_shipment_counter++;
+																	//Change load detals. Just to see old BOL's
+																	if(data[i].pages_number>1){pages = ' pages'}else{pages = ' page'}
+																	$("#lol_item_shipment").append('<tr><td>'+data[i].date_created+'</td><td><a href="#" style="color: black;" class="" onclick="bol_details('+data[i].ts_load_idts_load+','+localStorage.comma+data[i].bol_number+localStorage.comma+','+data[i].pages_number+','+data[i].origin_sign+','+data[i].destination_sign+','+data[i].pickup_lat+','+data[i].pickup_lng+','+data[i].drop_lat+','+data[i].drop_lng+','+localStorage.comma+data[i].pickup_address2+localStorage.comma+','+localStorage.comma+data[i].drop_address2+localStorage.comma+')"><h3>'+data[i].bol_number+'</h3></a></td><td>'+data[i].pages_number+pages+'</td></tr>');
 																	//----------
 																	localStorage.id_load_t = data[i].ts_load_idts_load;
 																	localStorage.bol_number_t = data[i].bol_number;
@@ -2221,11 +2227,7 @@ localStorage.comma = "'";
 																	localStorage.pick_add_t = data[i].pickup_address2;
 																	localStorage.drop_add_t = data[i].drop_address2;
 																	//----------
-																	localStorage.active_shipment_counter = active_shipment_counter;
-																}else{
-																	//Change load detals. Just to see old BOL's
-																	if(data[i].pages_number>1){pages = ' pages'}else{pages = ' page'}
-																	$("#lol_item_shipment").append('<tr><td>'+data[i].date_created+'</td><td><a href="#" style="color: black;" class="" onclick="bol_details('+data[i].ts_load_idts_load+','+localStorage.comma+data[i].bol_number+localStorage.comma+','+data[i].pages_number+','+data[i].origin_sign+','+data[i].destination_sign+','+data[i].pickup_lat+','+data[i].pickup_lng+','+data[i].drop_lat+','+data[i].drop_lng+','+localStorage.comma+data[i].pickup_address2+localStorage.comma+','+localStorage.comma+data[i].drop_address2+localStorage.comma+')"><h3>'+data[i].bol_number+'</h3></a></td><td>'+data[i].pages_number+pages+'</td></tr>');
+																	localStorage.inactive_shipment_counter = active_shipment_counter;
 																	}
 															}
 															/*if(active_shipment_counter == 1){
@@ -2242,7 +2244,7 @@ localStorage.comma = "'";
 																  'Ok');
 												}})
 								//-----------move to page 2_5 if single bol -------------//
-							if(localStorage.active_shipment_counter == '1'){
+							if(localStorage.inactive_shipment_counter == '1'){
 												if(localStorage.inactive == 1){
 													}else{
 														if(localStorage.load_hid == localStorage.load_hid_2){

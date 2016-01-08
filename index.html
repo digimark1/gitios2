@@ -43,7 +43,7 @@
 					 navigator.splashscreen.hide();
 					 $.mobile.loading("show", {text: 'loading',textVisible: true,theme: 'b',html: '<img src="css/loading.gif" style="width:40%;margin-left: 30%;" />'});
 					 // base url for dashboard
-					 localStorage.base_url = 'http://leanstaffing.com/trackngo';
+					 localStorage.base_url = 'http://leanstaffing.com/test_trackngo';
 					 // Url to save data into database
 					 localStorage.save_url = 'http://leanstaffing.com/testserver2';
 					 localStorage.files = 'http://leanstaffing.com/tkgo_files2';
@@ -2184,7 +2184,7 @@ localStorage.comma = "'";
 			                  localStorage.inactive = 1;
 				              $('#load_hid').html(load_id);
 							  $('#load_number_hid').html(load_number);
-				              
+				              localStorage.load_number = load_number;
 							  //-----------------------
 												 $.ajax({
 												 type: 'POST',

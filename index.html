@@ -1854,7 +1854,7 @@ $('#div_document_name').click(function(){
 								$("textarea#troubles_msg").val("");
 								//Add message instant
 								var name = (localStorage.name).split(" ");
-								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$('#troubles_').val()+'</p><br><br>');
+								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$("textarea#troubles_msg").val()+'</p><br><br>');
 								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
                             },
                             error: function(){
@@ -1897,7 +1897,7 @@ $('#div_document_name').click(function(){
 								$("textarea#troubles_msg").val("");
 								//Add message instant
 								var name = (localStorage.name).split(" ");
-								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$('#troubles_').val()+'</p><br><br>');
+								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$("textarea#troubles_msg").val()+'</p><br><br>');
 								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
                             },
                             error: function(){

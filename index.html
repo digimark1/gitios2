@@ -47,6 +47,7 @@
 					 // Url to save data into database
 					 localStorage.save_url = 'http://leanstaffing.com/testserver3';
 					 localStorage.files = 'http://leanstaffing.com/test_tkgo_files';
+					 
 					 localStorage.load_hid;
 					 localStorage.load_id_bol;
 					 localStorage.start;
@@ -700,7 +701,7 @@ function shipper_take_pic(){
 //---- VIEW PICTURE SHIPPER ------//
 
 function view_picture_shipper(load_id,bol_number,counter){
-	     window.open('http://leanstaffing.com/tkgo_files2/'+load_id+'_bol_'+bol_number+'_sp-'+counter+'.jpg', '_system');
+	     window.open(''+localStorage.files+'/'+load_id+'_bol_'+bol_number+'_sp-'+counter+'.jpg', '_system');
 	};
 //---- END OF VIEW PICTURE SHIPPER  ---- //
 //---- SIGN SHIPPER PICTURES -----//
@@ -716,7 +717,7 @@ function sign_picture_shipper(load_id,bol_number,counter){
 //---- VIEW PICTURE CONSIGNEE ------//
 
 function view_picture_consignee(load_id,bol_number,counter){
-	     window.open('http://leanstaffing.com/tkgo_files2/'+load_id+'_bol_'+bol_number+'_cs-'+counter+'.jpg', '_system');
+	     window.open(''+localStorage.files+'/'+load_id+'_bol_'+bol_number+'_cs-'+counter+'.jpg', '_system');
 	};
 //---- END OF VIEW PICTURE CONSIGNEE ---- //
 //---- SIGN CONSIGNEE PICTURES -----//
@@ -975,7 +976,7 @@ function document_take_pic(){
 														   // Erase Picture when succeeding 
 														 $('#cam_picture').html('');
 														 var d = new Date()
-										                  $('#lol_item_documents').append('<tr><td>'+('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+(d.getDate())).slice(-2)+'/'+d.getFullYear()+'</td><td><a style="color:blue; font-weight:500" onClick="window.open('+localStorage.comma+'http://leanstaffing.com/tkgo_files2/'+localStorage.temp_document_name+localStorage.comma+','+localStorage.comma+'_system'+localStorage.comma+')">'+$('#select_new_document').val()+'</a></td></tr>');
+										                  $('#lol_item_documents').append('<tr><td>'+('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+(d.getDate())).slice(-2)+'/'+d.getFullYear()+'</td><td><a style="color:blue; font-weight:500" onClick="window.open('+localStorage.comma+''+localStorage.files+'/'+localStorage.temp_document_name+localStorage.comma+','+localStorage.comma+'_system'+localStorage.comma+')">'+$('#select_new_document').val()+'</a></td></tr>');
 														  localStorage.save_document_pic = '/save_document_page.php';
 														  save_additional_document();
 													}
@@ -998,7 +999,7 @@ function document_take_pic(){
 	};
 
 $('#original_id').click(function(){
-		window.open('http://leanstaffing.com/tkgo_files2/'+localStorage.load_id_bol+'_bol_'+localStorage.bol_number+'.pdf', '_system');
+		window.open(''+localStorage.files+'/'+localStorage.load_id_bol+'_bol_'+localStorage.bol_number+'.pdf', '_system');
 	});
 	
 $('#div_document_name').click(function(){
@@ -1228,7 +1229,7 @@ $('#div_document_name').click(function(){
    </div>
    <script>
    $('#original_id2').click(function(){
-		window.open('http://leanstaffing.com/tkgo_files2/'+localStorage.load_id_bol+'_bol_'+localStorage.bol_number+'.pdf', '_system');
+		window.open(''+localStorage.files+'/'+localStorage.load_id_bol+'_bol_'+localStorage.bol_number+'.pdf', '_system');
 	});
 	
    </script>
@@ -2581,7 +2582,7 @@ function update_shipments_load(load_id){
 																var doc_date = data[i].date_created;
 												                 var split_doc_date = doc_date.split(' ');
 												                 var split_doc_date_1 = split_doc_date[0].split('-');
-																$('#lol_item_documents').append('<tr><td>'+split_doc_date_1[1]+'/'+split_doc_date_1[2]+'/'+split_doc_date_1[0]+'</td><td><a style="color:blue; font-weight:500" onClick="window.open('+localStorage.comma+'http://leanstaffing.com/tkgo_files2/'+data[i].url+''+localStorage.comma+','+localStorage.comma+'_system'+localStorage.comma+')">'+data[i].name+'</a></td></tr>');
+																$('#lol_item_documents').append('<tr><td>'+split_doc_date_1[1]+'/'+split_doc_date_1[2]+'/'+split_doc_date_1[0]+'</td><td><a style="color:blue; font-weight:500" onClick="window.open('+localStorage.comma+''+localStorage.files+'/'+data[i].url+''+localStorage.comma+','+localStorage.comma+'_system'+localStorage.comma+')">'+data[i].name+'</a></td></tr>');
 																}
 																$.mobile.loading("hide");
 														},

@@ -1821,6 +1821,10 @@ $('#div_document_name').click(function(){
 								$('#message_button').show();
 								$('#loading_message').hide();
 								$("textarea#troubles_msg").val("");
+								//Add message instant
+								var name = (localStorage.name).split(" ");
+								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$('#troubles_').val()+'</p><br><br>');
+								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
                             },
                             error: function(){
                                 console.log(data);
@@ -1860,6 +1864,10 @@ $('#div_document_name').click(function(){
 								$('#message_button').show();
 								$('#loading_message').hide();
 								$("textarea#troubles_msg").val("");
+								//Add message instant
+								var name = (localStorage.name).split(" ");
+								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$('#troubles_').val()+'</p><br><br>');
+								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
                             },
                             error: function(){
                                 console.log(data);

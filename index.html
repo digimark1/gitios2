@@ -2727,6 +2727,7 @@ function update_shipments_load(load_id){
 		$.ajax({
 							type: 'POST',
 							dataType: 'json',
+							async:false,
 							url: ''+localStorage.base_url+'/load/get_chat/'+parseFloat(localStorage.load_id_bol)+'/1',
 							success: function(data){
 								$("#notification_message").html("");
@@ -2754,6 +2755,7 @@ function update_shipments_load(load_id){
 						$.ajax({
 							type: 'POST',
 							dataType: 'json',
+							async:false,
 							url: ''+localStorage.base_url+'/load/get_chat/'+localStorage.load_id_bol+'/1',
 								success: function(data){
 								$("#notification_message").html("");
@@ -2765,6 +2767,7 @@ function update_shipments_load(load_id){
 									$("#notification_message").append('<p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p><br><br>');
 								}
 								}
+								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
 							},
 							error: function(data){
 								console.log(data);

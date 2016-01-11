@@ -267,6 +267,7 @@
 														//$('#consignee_button').html('<a href="#" id="sig_button2" name="b" onClick="consignee_alert()"><img src="css/button3.png" width="100%"/></a>');
 														//localStorage.msg = 1;
 														view_bol();
+														start_chat();
 													}
 												}
 												//localStorage.msg = 1;
@@ -1288,6 +1289,36 @@ $('#div_document_name').click(function(){
 		var active_loads_number;
 		var driver_location_interval;
 		var active_shipment;
+		
+		function start_chat(){
+			// ----- START CHAT when showing page ------//
+		$.ajax({
+							type: 'POST',
+							dataType: 'json',
+							async:false,
+							url: ''+localStorage.base_url+'/load/get_chat/'+parseFloat(localStorage.load_id_bol)+'/1',
+							success: function(data){
+								$("#notification_message").html("");
+								console.log(data);
+								for(i=0;i<data.length;i++){
+								if ((data[i].driver_sw == '0')&&(data[i].notify_driver =='1')){
+									$("#notification_message").append('<p class="pmanager">'+data[i].user_login+' : '+data[i].comment+'</p><br><br>');
+								} else if ((data[i].driver_sw == '1')) {
+									$("#notification_message").append('<p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p><br><br>');
+								}
+									
+								}
+								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
+								/*setTimeout(function () {
+											myScroll_message.refresh();
+										}, 500);*/
+							},
+							error: function(data){
+								console.log(data);
+							}});
+							
+		// ----- END OF ---- START CHAT when showing page ------//	
+			};
 				
 		
 		$('#signout0, #signout0_2, #signout0_5, #signout1, #signout2, #signout3, #signout5, #signout6, #signout7').click(function(){
@@ -2732,31 +2763,7 @@ function update_shipments_load(load_id){
 		cordova.plugins.backgroundMode.enable();
 		//$('#msg_hid').hide();
 		// ----- START CHAT when showing page ------//
-		$.ajax({
-							type: 'POST',
-							dataType: 'json',
-							async:false,
-							url: ''+localStorage.base_url+'/load/get_chat/'+parseFloat(localStorage.load_id_bol)+'/1',
-							success: function(data){
-								$("#notification_message").html("");
-								console.log(data);
-								for(i=0;i<data.length;i++){
-								if ((data[i].driver_sw == '0')&&(data[i].notify_driver =='1')){
-									$("#notification_message").append('<p class="pmanager">'+data[i].user_login+' : '+data[i].comment+'</p><br><br>');
-								} else if ((data[i].driver_sw == '1')) {
-									$("#notification_message").append('<p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p><br><br>');
-								}
-									
-								}
-								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
-								/*setTimeout(function () {
-											myScroll_message.refresh();
-										}, 500);*/
-							},
-							error: function(data){
-								console.log(data);
-							}});
-							
+					start_chat();		
 		// ----- END OF ---- START CHAT when showing page ------//	
 						
 	chatInt = setInterval(function(){
@@ -2775,13 +2782,13 @@ function update_shipments_load(load_id){
 									$("#notification_message").append('<p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p><br><br>');
 								}
 								}
-								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
+								//$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
 							},
 							error: function(data){
 								console.log(data);
 							}});
 					
-							$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
+							//$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
 							/*setTimeout(function () {
 											myScroll_message.refresh();
 										}, 500);*/

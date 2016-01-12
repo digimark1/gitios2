@@ -43,10 +43,10 @@
 					 navigator.splashscreen.hide();
 					 $.mobile.loading("show", {text: 'loading',textVisible: true,theme: 'b',html: '<img src="css/loading.gif" style="width:40%;margin-left: 30%;" />'});
 					 // base url for dashboard
-					 localStorage.base_url = 'http://leanstaffing.com/test_trackngo';
+					 localStorage.base_url = 'http://leanstaffing.com/trackngo';
 					 // Url to save data into database
-					 localStorage.save_url = 'http://leanstaffing.com/testserver3';
-					 localStorage.files = 'http://leanstaffing.com/test_tkgo_files';
+					 localStorage.save_url = 'http://leanstaffing.com/testserver2';
+					 localStorage.files = 'http://leanstaffing.com/tkgo_files';
 					 
 					 localStorage.load_hid;
 					 localStorage.load_id_bol;
@@ -1302,9 +1302,9 @@ $('#div_document_name').click(function(){
 								console.log(data);
 								for(i=0;i<data.length;i++){
 								if ((data[i].driver_sw == '0')&&(data[i].notify_driver =='1')){
-									$("#notification_message").append('<p class="pmanager">'+data[i].user_login+' : '+data[i].comment+'</p><br><br>');
+									$("#notification_message").append('<div><p class="pmanager">'+data[i].user_login+' : '+data[i].comment+'</p></div>');
 								} else if ((data[i].driver_sw == '1')) {
-									$("#notification_message").append('<p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p><br><br>');
+									$("#notification_message").append('<div><p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p></div>');
 								}
 									
 								}
@@ -1854,7 +1854,7 @@ $('#div_document_name').click(function(){
 								
 								//Add message instant
 								var name = (localStorage.name).split(" ");
-								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$("textarea#troubles_msg").val()+'</p><br><br>');
+								$("#notification_message").append('<div><p class="pdriver">'+name[0]+' : '+$("textarea#troubles_msg").val()+'</p></div>');
 								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
 								$("textarea#troubles_msg").val("");
                             },
@@ -1898,7 +1898,7 @@ $('#div_document_name').click(function(){
 								
 								//Add message instant
 								var name = (localStorage.name).split(" ");
-								$("#notification_message").append('<p class="pdriver">'+name[0]+' : '+$("textarea#troubles_msg").val()+'</p><br><br>');
+								$("#notification_message").append('<div><p class="pdriver">'+name[0]+' : '+$("textarea#troubles_msg").val()+'</p></div>');
 								$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);
 								$("textarea#troubles_msg").val("");
                             },
@@ -2779,9 +2779,9 @@ function update_shipments_load(load_id){
 								console.log(data);
 								for(i=0;i<data.length;i++){
 								if ((data[i].driver_sw == '0')&&(data[i].notify_driver =='1')){
-									$("#notification_message").append('<p class="pmanager">'+data[i].user_login+' : '+data[i].comment+'</p><br><br>');
+									$("#notification_message").append('<div><p class="pmanager">'+data[i].user_login+' : '+data[i].comment+'</p></div>');
 								} else if ((data[i].driver_sw == '1')) {
-									$("#notification_message").append('<p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p><br><br>');
+									$("#notification_message").append('<div><p class="pdriver">'+data[i].driver_name+' : '+data[i].comment+'</p></div>');
 								}
 								}
 								//$('#notification_message').scrollTop($('#notification_message')[0].scrollHeight);

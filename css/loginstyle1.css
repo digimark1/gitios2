@@ -414,13 +414,13 @@ body :-ms-input-placeholder {
 					margin-bottom:2px;
 					background:#DDDDDD;
 					float:right;
-					width:100%
+					/*width:100%*/
 					}
 				.pmanager{
 					margin-top:2px;
 					margin-bottom:2px;
 					float:left;
-					width:100%
+					/*width:100%*/
 					}
 				#bol_image{
 					/*margin-bottom:15px;*/

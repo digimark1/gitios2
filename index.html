@@ -219,7 +219,7 @@
 							//----UPDATE LOAD ----//
 							var load_subup = load_str.substring(0, 17);
 							if(load_subup == "Changes in load #"){
-								 var load_number = parseFloat(load_subup.substring(17));
+								 var load_number = parseFloat(load_subup[0].substring(17));
 								 $.ajax({
 									 type:'POST',
 									 dataType: 'json',

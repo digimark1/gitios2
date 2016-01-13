@@ -226,17 +226,12 @@
 									 async:false,
 									 url:''+localStorage.base_url+'/load/app_get_load_by_driver/'+localStorage.user_id,
 									 success: function(data){
-										 alert('load number-'+load_number+'-');
 										  for(i=0;i<data.length;i++){
 											  if (data[i].load_number == load_number){
-												  alert('load number match');
 												  localStorage.load_id_bol = data[i].idts_load;
 												  localStorage.load_number = data[i].load_number;
-												   alert('load number match 2');
 												  $('#load_number_hid').html(data[i].load_number);
 												  active_shipments_load(data[i].idts_load,data[i].load_number);
-												  alert('load number match 3');
-												  $('#changes_hidden').html('hello world changed');
 												  };
 											  }
 										 },
@@ -251,7 +246,7 @@
 							if(load_sub == "Msg load #" ){
 								$("#image_source").attr('src','css/loading2.gif');
 								var load_sub_split = load_str.split("-");
-								var load_number = parseFloat(load_sub_split[0].substring(10,20));
+								var load_number = parseFloat(load_sub_split[0].substring(10));
 								
 								// alert(load_title_push);
 									 $.ajax({
@@ -299,7 +294,7 @@
 								//localStorage.load_hid = 1;
 								$("#image_source").attr('src','css/loading2.gif');
 								var load_sub_split = load_str.split("-");
-								var load_number = parseFloat(load_sub_split[0].substring(10,20));
+								var load_number = parseFloat(load_sub_split[0].substring(10));
 								//alert(load_push);
 									 $.ajax({
 									 type: 'POST',

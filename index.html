@@ -228,10 +228,14 @@
 									 success: function(data){
 										  for(i=0;i<data.length;i++){
 											  if (data[i].load_number == load_number){
+												  alert('load number match');
 												  localStorage.load_id_bol = data[i].idts_load;
 												  localStorage.load_number = data[i].load_number;
+												   alert('load number match 2');
 												  $('#load_number_hid').html(data[i].load_number);
 												  active_shipments_load(data[i].idts_load,data[i].load_number);
+												  alert('load number match 3');
+												  $('#changes_hidden').html('hello world changed');
 												  };
 											  }
 										 },
@@ -364,6 +368,7 @@
   </head>
   <body>
    <div data-role="page" id="page0">
+        <div id="changes_hidden" hidden></div>
    		<div id="ios_notification" hidden></div>
         <div id="cam_picture" hidden></div>
    		<div id="token_device_hid" hidden></div>

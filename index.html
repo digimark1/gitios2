@@ -226,6 +226,7 @@
 									 async:false,
 									 url:''+localStorage.base_url+'/load/app_get_load_by_driver/'+localStorage.user_id,
 									 success: function(data){
+										 alert('load number match 00');
 										  for(i=0;i<data.length;i++){
 											  if (data[i].load_number == load_number){
 												  alert('load number match');

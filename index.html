@@ -221,7 +221,7 @@
 							if(load_subup == "Changes in load #"){
 								 var load_number = parseFloat(load_subup.substring(17));
 								 $.ajax({
-									 type:POST,
+									 type:'POST',
 									 dataType: 'json',
 									 async:false,
 									 url:''+localStorage.base_url+'/load/app_get_load_by_driver/'+localStorage.user_id,

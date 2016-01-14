@@ -154,7 +154,10 @@
 							      localStorage.tobecontinued = 1;
 								  //alert('localStorage.finish ==0');
 								  localStorage.first_trace = 'device_ready';
+								  if(localStorage.notification == 1){}else{
 								  active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
+								  }
+								  localStorage.notification = 0;
 								  $.mobile.loading("hide");
 							}else{
 								  localStorage.tobecontinued = 0;
@@ -231,6 +234,7 @@
 												  localStorage.load_id_bol = data[i].idts_load;
 												  localStorage.load_number = data[i].load_number;
 												  $('#load_number_hid').html(data[i].load_number);
+												  
 												  active_shipments_load(data[i].idts_load,data[i].load_number);
 												  };
 											  }
@@ -309,6 +313,7 @@
 														localStorage.last_active_load = localStorage.load_id_bol;
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
+														localStorage.notification = 1;
 														//$("#header_load").html('BOL # :'+'<a id="bol" href="#" x-apple-data-detectors="false">'+data[i].bol_number+'</a>');
 														//$("#bol_number_hid").html(data[i].bol_number);
 														//$('#consignee_button').html('<a href="#" id="sig_button2" name="b" onClick="consignee_alert()"><img id="img_gps" src="css/button3.png" width="100%"/></a>');
@@ -2198,8 +2203,9 @@ localStorage.comma = "'";
 													}else{
 														if(localStorage.load_hid == localStorage.load_hid_2){
 															}else{
+															
 														   // alert('trace_load activated')
-														   if(localStorage.trace_load2_mark == '1'){
+														   if(localStorage.trace_load2_mark == 1){
 															   }else{
 															     trace_load();
 																 alert('I got inside trace 2');
@@ -3179,7 +3185,7 @@ $('#page2').on('pageshow',function(e,data){
 						if(localStorage.load_hid == localStorage.load_hid_2){
 							}else{
 						   // alert('trace_load activated')
-						   	if(localStorage.trace_load2_mark == '1'){
+						   	if(localStorage.trace_load2_mark == 1){
 							   }else{
 								 trace_load();
 							   };

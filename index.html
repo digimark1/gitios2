@@ -2125,6 +2125,7 @@ localStorage.comma = "'";
 							  //----- After being Closed and Reopened ---//
 						   if(localStorage.tobecontinued == 1){
 							      trace_load2();
+								  localStorage.trace_load2_mark = 1;
 								  //alert('tobecontinued == 1')
 								  localStorage.tobecontinued = 0;
 							   }
@@ -2197,7 +2198,11 @@ localStorage.comma = "'";
 														if(localStorage.load_hid == localStorage.load_hid_2){
 															}else{
 														   // alert('trace_load activated')
-															trace_load();
+														   if(localStorage.trace_load2_mark == 1){
+															   }else{
+															     trace_load();
+															   };
+															localStorage.trace_load2_mark = 0;
 														}
 													}
 												if(localStorage.inactive == 1){}else{
@@ -3172,7 +3177,11 @@ $('#page2').on('pageshow',function(e,data){
 						if(localStorage.load_hid == localStorage.load_hid_2){
 							}else{
 						   // alert('trace_load activated')
-						   	trace_load();
+						   	if(localStorage.trace_load2_mark == 1){
+							   }else{
+								 trace_load();
+							   };
+							localStorage.trace_load2_mark = 0;
 						}
 					}
 		if(localStorage.inactive == 1){}else{

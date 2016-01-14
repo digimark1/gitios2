@@ -2126,7 +2126,7 @@ localStorage.comma = "'";
 						   if(localStorage.tobecontinued == 1){
 							      trace_load2();
 								  alert('I got inside trace 1');
-								  localStorage.trace_load2_mark = 1;
+								  localStorage.trace_load2_mark = 0;
 								  //alert('tobecontinued == 1')
 								  localStorage.tobecontinued = 0;
 							   }
@@ -2199,12 +2199,12 @@ localStorage.comma = "'";
 														if(localStorage.load_hid == localStorage.load_hid_2){
 															}else{
 														   // alert('trace_load activated')
-														   if(localStorage.trace_load2_mark == 1){
+														   if(localStorage.trace_load2_mark == 0){
 															   }else{
 															     trace_load();
 																 alert('I got inside trace 2');
 															   };
-															localStorage.trace_load2_mark = 0;
+															localStorage.trace_load2_mark = 1;
 														}
 													}
 												if(localStorage.inactive == 1){}else{
@@ -3179,11 +3179,11 @@ $('#page2').on('pageshow',function(e,data){
 						if(localStorage.load_hid == localStorage.load_hid_2){
 							}else{
 						   // alert('trace_load activated')
-						   	if(localStorage.trace_load2_mark == 1){
+						   	if(localStorage.trace_load2_mark == 0){
 							   }else{
 								 trace_load();
 							   };
-							localStorage.trace_load2_mark = 0;
+							localStorage.trace_load2_mark = 1;
 						}
 					}
 		if(localStorage.inactive == 1){}else{

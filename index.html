@@ -154,10 +154,7 @@
 							      localStorage.tobecontinued = 1;
 								  //alert('localStorage.finish ==0');
 								  localStorage.first_trace = 'device_ready';
-								  if(localStorage.notification == 1){}else{
 								  active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
-								  }
-								  localStorage.notification = 0;
 								  $.mobile.loading("hide");
 							}else{
 								  localStorage.tobecontinued = 0;
@@ -234,7 +231,6 @@
 												  localStorage.load_id_bol = data[i].idts_load;
 												  localStorage.load_number = data[i].load_number;
 												  $('#load_number_hid').html(data[i].load_number);
-												  
 												  active_shipments_load(data[i].idts_load,data[i].load_number);
 												  };
 											  }
@@ -313,12 +309,6 @@
 														localStorage.last_active_load = localStorage.load_id_bol;
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
-														localStorage.notification = 1;
-														//$("#header_load").html('BOL # :'+'<a id="bol" href="#" x-apple-data-detectors="false">'+data[i].bol_number+'</a>');
-														//$("#bol_number_hid").html(data[i].bol_number);
-														//$('#consignee_button').html('<a href="#" id="sig_button2" name="b" onClick="consignee_alert()"><img id="img_gps" src="css/button3.png" width="100%"/></a>');
-														//$('#shipper_button').html('<a href="#page3" id="sig_button1" name="a" class=""><img src="css/button2.png" width="100%"/></a>');
-														//localStorage.bol = 1;
 														localStorage.first_trace = 'notification_ready';
 														active_shipments_load(data[i].idts_load,data[i].load_number);
 														//view_bol();
@@ -2116,6 +2106,7 @@ localStorage.comma = "'";
 			              $('#load_number_hid').html(load_number);
 			              
 							 localStorage.active_shipment_counter = "";
+							 var trace_mark;
 				             var active_shipment_counter = 0;
 							//---Markers for resets, traces and more---//
 								localStorage.inactive = 0;
@@ -2129,11 +2120,13 @@ localStorage.comma = "'";
 							 localStorage.load_id_bol = load_id;
 							  //----- After being Closed and Reopened ---//
 						   if(localStorage.tobecontinued == 1){
-							      localStorage.trace_load2_mark = 1;
+							   //if(trace_mark == 2){}else{
+							      trace_mark = 1;
 							      trace_load2();
 								  alert('I got inside trace 1');
 								  //alert('tobecontinued == 1')
 								  localStorage.tobecontinued = 0;
+							   //};
 							   }
 						   //-----------------------------------------//
 							 //---Last active Load ---// GO directly to last active load checked
@@ -2203,14 +2196,12 @@ localStorage.comma = "'";
 													}else{
 														if(localStorage.load_hid == localStorage.load_hid_2){
 															}else{
-															
 														   // alert('trace_load activated')
-														   if(localStorage.trace_load2_mark == 1){
-															   }else{
+														   if(trace_mark == 1){}else{
+														         trace_mark = 2;
 															     trace_load();
 																 alert('I got inside trace 2');
-															   };
-															localStorage.trace_load2_mark = 0;
+														   }
 														}
 													}
 												if(localStorage.inactive == 1){}else{
@@ -2237,7 +2228,7 @@ localStorage.comma = "'";
 								 //----END---  MOVE if there is only one active shipment
 							location.href = '#page2';
 											}
-	    	localStorage.notification = 0;};
+	    	};
 //-------------------INACTIVE SHIPMENTS LOAD---------------------------//
 		function inactive_shipments_load(load_id,load_number){
 							  $.mobile.loading("show", {text: 'loading',textVisible: true,theme: 'b',html: '<img src="css/loading.gif" style="width:40%;margin-left: 30%;" />'});

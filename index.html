@@ -309,6 +309,13 @@
 											console.log(data);
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
+													//---- redundant data ---/////
+													// base url for dashboard
+													 localStorage.base_url = 'http://leanstaffing.com/trackngo';
+													 // Url to save data into database
+													 localStorage.save_url = 'http://leanstaffing.com/testserver2';
+													 localStorage.files = 'http://leanstaffing.com/tkgo_files';
+													//--- END of redundant DATA ----//
 													    localStorage.notification = 1;
 														localStorage.load_id_bol = data[i].idts_load;
 														localStorage.last_active_load = localStorage.load_id_bol;

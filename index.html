@@ -315,6 +315,11 @@
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
 														localStorage.first_trace = 'notification_ready';
+														///----
+														active_load(localStorage.user_id);
+														cordova.plugins.backgroundMode.enable();
+														$('#back_change').attr('href','#page2');
+														////----
 														active_shipments_load(data[i].idts_load,data[i].load_number);
 														
 														//view_bol();

@@ -15,8 +15,8 @@
 		var myScroll;
 		var myScroll_message;
 		function loaded () {
-			localStorage.first_trace = 'friend';
-			localStorage.second_trace = 'friend';
+			localStorage.ready = 'no';
+			//localStorage.second_trace = 'friend';
 		myScroll = new iScroll('bol_image', {
 				zoom: true,
 				bounce:false
@@ -323,9 +323,9 @@
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
 														localStorage.first_trace = 'notification_ready';
-														/*if(localStorage.ready == 'yes'){
+														if(localStorage.ready == 'yes'){
 															  active_shipments_load(data[i].idts_load,data[i].load_number);
-															}*/
+															};
 														//active_shipments_load_not(data[i].idts_load,data[i].load_number);
 													}
 												}

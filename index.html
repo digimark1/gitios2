@@ -15,6 +15,8 @@
 		var myScroll;
 		var myScroll_message;
 		function loaded () {
+			localStorage.first_trace = 'friend';
+			localStorage.second_trace = 'friend';
 		myScroll = new iScroll('bol_image', {
 				zoom: true,
 				bounce:false
@@ -40,6 +42,7 @@
     document.addEventListener("deviceready", onDeviceReady, false);
     // device APIs are available
 				function onDeviceReady() {
+					localStorage.ready = 'no';
 					 navigator.splashscreen.hide();
 					 $.mobile.loading("show", {text: 'loading',textVisible: true,theme: 'b',html: '<img src="css/loading.gif" style="width:40%;margin-left: 30%;" />'});
 					 // base url for dashboard
@@ -136,11 +139,13 @@
                             '<input type="hidden" id="longitude" name="longitude" value="'          + position.coords.longitude             + '" /><br />' ;
 	
 				if(!localStorage.user_id){
+					localStorage.ready = 'yes';
 					location.href='#page1';
 					$.mobile.loading("hide");
 					$('#loading_start').hide();
 					//alert('device ready and needs the user');
 					}else{
+						localStorage.ready = 'yes';
 						//alert('device ready for app use');
 						if(localStorage.location_mark == 1){
 						        localStorage.location_mark = 0;
@@ -153,7 +158,7 @@
 							if(localStorage.finish == 0){
 									  localStorage.tobecontinued = 1;
 									  //alert('localStorage.finish ==0');
-									  localStorage.first_trace = 'device_ready';
+									  //localStorage.first_trace = 'device_ready';
 									  active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
 									  $.mobile.loading("hide");
 								}else{
@@ -318,6 +323,9 @@
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
 														localStorage.first_trace = 'notification_ready';
+														/*if(localStorage.ready == 'yes'){
+															  active_shipments_load(data[i].idts_load,data[i].load_number);
+															}*/
 														//active_shipments_load_not(data[i].idts_load,data[i].load_number);
 													}
 												}

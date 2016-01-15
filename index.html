@@ -151,7 +151,6 @@
 								$.mobile.loading("hide");
 								};
 						if(localStorage.notification == 1){
-							   localStorage.notification = 0;
 							}else{
 							if(localStorage.finish == 0){
 									  localStorage.tobecontinued = 1;
@@ -165,6 +164,7 @@
 									  $.mobile.loading("hide");
 									};
 							};
+						localStorage.notification = 0;
 						setTimeout(function(){
 							$.mobile.loading("hide");
 							 $('#loading_start').hide();
@@ -309,13 +309,14 @@
 											console.log(data);
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
+													    localStorage.notification = 1;
 														localStorage.load_id_bol = data[i].idts_load;
 														localStorage.last_active_load = localStorage.load_id_bol;
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
 														localStorage.first_trace = 'notification_ready';
 														active_shipments_load(data[i].idts_load,data[i].load_number);
-														localStorage.notification = 1;
+														
 														//view_bol();
 													}
 												}
@@ -851,7 +852,7 @@ function consignee_take_pic(){
 																				error: function(data){
 																					console.log(data);
 																					navigator.notification.alert(
-																												  'There was an error with active loads',
+																												  'There was an error with active loads 12',
 																												  alertCallback,
 																												  'Smith TracknGo',
 																												  'Ok');
@@ -1558,7 +1559,7 @@ $('#div_document_name').click(function(){
 																	error: function(data){
 																		console.log(data);
 																		navigator.notification.alert(
-																									  'There was an error with active loads',
+																									  'There was an error with active loads 2',
 																									  alertCallback,
 																									  'Smith TracknGo',
 																									  'Ok');
@@ -2097,7 +2098,7 @@ $('#div_document_name').click(function(){
                             error: function(data){
                                 console.log(data);
 								navigator.notification.alert(
-															  'There was an error with active loads',
+															  'There was an error with active loads 3',
 															  alertCallback,
 															  'Smith TracknGo',
 															  'Ok');
@@ -2189,7 +2190,7 @@ localStorage.comma = "'";
                             error: function(data){
                                 console.log(data);
 								navigator.notification.alert(
-															  'There was an error with active loads',
+															  'There was an error with active loads 4',
 															  alertCallback,
 															  'Smith TracknGo',
 															  'Ok');
@@ -2297,7 +2298,7 @@ localStorage.comma = "'";
 												error: function(data){
 													console.log(data);
 													navigator.notification.alert(
-																  'There was an error with active loads',
+																  'There was an error with active loads 5',
 																  alertCallback,
 																  'Smith TracknGo',
 																  'Ok');
@@ -2402,7 +2403,7 @@ localStorage.comma = "'";
                             error: function(data){
                                 console.log(data);
 								navigator.notification.alert(
-											  'There was an error with active loads',
+											  'There was an error with active loads 6',
 											  alertCallback,
 											  'Smith TracknGo',
 											  'Ok');
@@ -2466,7 +2467,7 @@ function update_shipments_load(load_id){
                             error: function(data){
                                 console.log(data);
 								navigator.notification.alert(
-											  'There was an error with active loads',
+											  'There was an error with active loads 7',
 											  alertCallback,
 											  'Smith TracknGo',
 											  'Ok');
@@ -2524,7 +2525,7 @@ function update_shipments_load(load_id){
 					 error: function(){
 						console.log(data);
 						navigator.notification.alert(
-								  'There was an error, Please try again',
+								  'There was an error, Please try again 1',
 								  alertCallback,
 								  'Smith TracknGo',
 								  'Ok');
@@ -2646,7 +2647,7 @@ function update_shipments_load(load_id){
 													error: function(data){
 														console.log(data);
 														navigator.notification.alert(
-																  'There was an error with active loads',
+																  'There was an error with active loads 9',
 																  alertCallback,
 																  'Smith TracknGo',
 																  'Ok');
@@ -2708,7 +2709,7 @@ function update_shipments_load(load_id){
                             error: function(data){
                                 console.log(data);
 								navigator.notification.alert(
-								  'There was an error loading the details',
+								  'There was an error loading the details 1',
 								  alertCallback,
 								  'Smith TracknGo',
 								  'Ok');
@@ -2924,7 +2925,7 @@ function update_shipments_load(load_id){
                             error: function(data){
                                 console.log(data);
 								navigator.notification.alert(
-															  'There was an error with active loads',
+															  'There was an error with active loads 11',
 															  alertCallback,
 															  'Smith TracknGo',
 															  'Ok');

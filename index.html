@@ -157,13 +157,17 @@
 									  active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
 									  $.mobile.loading("hide");
 								}else{
-									  localStorage.tobecontinued = 0;
-									  location.href='#page1_1';
-									  $.mobile.loading("hide");
+									if(localStorage.notification == 1){
+										 active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
+										 $.mobile.loading("hide");
+										}else{
+										  localStorage.tobecontinued = 0;
+										  location.href='#page1_1';
+										  $.mobile.loading("hide");
+										}
+										localStorage.notification = 0;
 									};
-							if(localStorage.finish_not == 0){
-								localStorage.finish = 0;
-								}
+							
 						setTimeout(function(){
 							$.mobile.loading("hide");
 							 $('#loading_start').hide();
@@ -314,7 +318,7 @@
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
 														localStorage.first_trace = 'notification_ready';
-														active_shipments_load_not(data[i].idts_load,data[i].load_number);
+														//active_shipments_load_not(data[i].idts_load,data[i].load_number);
 													}
 												}
 												//localStorage.test2 = 1;

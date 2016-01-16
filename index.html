@@ -234,6 +234,7 @@
 							//----UPDATE LOAD ----//
 							var load_subup = load_str.substring(0, 17);
 							if(load_subup == "Changes in load #"){
+								localStorage.notification = 1;
 								 var load_number = parseFloat(load_str.substring(17));
 								 $.ajax({
 									 type:'POST',
@@ -246,9 +247,9 @@
 												  localStorage.load_id_bol = data[i].idts_load;
 												  localStorage.load_number = data[i].load_number;
 												  $('#load_number_hid').html(data[i].load_number);
-												  active_shipments_load(data[i].idts_load,data[i].load_number);
 												  };
 											  }
+											  active_shipments_load(localStorage.load_id_bol,localStorage.load_number);
 										 },
 									 error: function(data){},
 									 });
@@ -269,33 +270,21 @@
 									 dataType: 'json',
 									 async:false,
 									 url: ''+localStorage.base_url+'/load/app_get_load_by_driver/'+localStorage.user_id,
-									 //http://leanstaffing.com/trackngo/load/app_get_load_view/
 										success: function(data){
 											console.log(data);
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
 														localStorage.load_id_bol = data[i].idts_load;
 														$('#load_number_hid').html(data[i].load_number);
-														//$("#header_load").html('BOL # :'+'<a id="bol" href="#" x-apple-data-detectors="false">'+data[i].bol_number+'</a>');
-														//$("#bol_number_hid").html(data[i].bol_number);
 														localStorage.load_number = data[i].load_number;
-														//$('#consignee_button').html('<a href="#" id="sig_button2" name="b" onClick="consignee_alert()"><img src="css/button3.png" width="100%"/></a>');
-														//localStorage.msg = 1;
 														view_bol();
 														start_chat();
 													}
 												}
-												//localStorage.msg = 1;
-												//localStorage.test2 = 1;
-												 //alert('1call:'+$('#load_hid').html());
 										}
 										})
-								//
-								 // load_details3($('#load_hid').html());
-								 
 								  setTimeout(function(){
 									location.href = "#page4";
-							 		//localStorage.msg = 0;
 							      },100) 
 								 
 								}; 
@@ -315,30 +304,17 @@
 											console.log(data);
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
-													//alert('userid'+localStorage.user_id);
-													    
 														localStorage.load_id_bol = data[i].idts_load;
 														localStorage.last_active_load = localStorage.load_id_bol;
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
-															//alert('7');
 															//alert(data[i].idts_load+'-'+data[i].load_number);
 													};
 												};
-												//if(localStorage.ready == 'yes'){
 												     active_shipments_load(localStorage.load_id_bol,localStorage.last_active_load_number);
-												//};
-												//localStorage.test2 = 1;
-												$('#validate_').html(1);
 										},
 									 error: function(data){},
 										});
-								//active_load(localStorage.user_id);								 
-								   /*setTimeout(function(){
-									    //location.href = "#page2";
-							 			//localStorage.bol = 0;
-							      },100)*/ 
-								   
 								}
 					}
                     

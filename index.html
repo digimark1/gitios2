@@ -2205,8 +2205,11 @@ localStorage.comma = "'";
 							//-----------move to page 2_5 if single bol -------------//
 							if(localStorage.active_shipment_counter == '1'){
 												if(localStorage.inactive == 1){
+													alert('local inactive 1');
 													}else{
+														alert('local inactive 1 ??');
 														if(localStorage.load_hid == localStorage.load_hid_2){
+															alert('local load_hid & load_hid2');
 															}else{
 														   // alert('trace_load activated')
 														   if(localStorage.double_trace_mark == 1){}else{
@@ -2236,6 +2239,7 @@ localStorage.comma = "'";
 								 //----END---  MOVE if there is only one active shipment
 							location.href = '#page2';
 											}
+							localStorage.double_trace_mark = 0;
 	    	};
 //------- ACTIVE SHIPMENTS LOAD NOTIFICATION ----- ///
 function active_shipments_load_not(load_id,load_number){};
@@ -3187,8 +3191,10 @@ $('#page2').on('pageshow',function(e,data){
 						if(localStorage.load_hid == localStorage.load_hid_2){
 							}else{
 						   // alert('trace_load activated')
+						    if(localStorage.double_trace_mark == 1){}else{
 								 trace_load();
 								 alert('I got inside trace 3');
+							};
 						}
 					}
 		if(localStorage.inactive == 1){}else{
@@ -3205,6 +3211,7 @@ $('#page2').on('pageshow',function(e,data){
 		localStorage.load_hid = localStorage.load_hid_2;
 //-----------------------------------------	
 		}
+		localStorage.double_trace_mark = 0;
 		});
 		
 		//$("select option:contains('Value a')").attr("disabled","disabled")

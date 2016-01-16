@@ -159,13 +159,16 @@
 									  localStorage.tobecontinued = 1;
 									  //alert('localStorage.finish ==0');
 									  //localStorage.first_trace = 'device_ready';
+									  alert('local finish 0');
 									  active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
 									  $.mobile.loading("hide");
 								}else{
 									if(localStorage.notification == 1){
+										alert('local notification 1');
 										 active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
 										 $.mobile.loading("hide");
 										}else{
+											alert('local notification 0');
 										  localStorage.tobecontinued = 0;
 										  location.href='#page1_1';
 										  $.mobile.loading("hide");

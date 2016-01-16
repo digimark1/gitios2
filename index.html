@@ -313,28 +313,19 @@
 												if (data[i].load_number == load_number){
 													alert('userid'+localStorage.user_id);
 													    localStorage.notification = 1;
-														//alert('2');
 														localStorage.load_id_bol = data[i].idts_load;
-														//alert('3');
 														localStorage.last_active_load = localStorage.load_id_bol;
-														alert('4');
 														$('#load_number_hid').html(data[i].load_number);
-														alert('5');
 														localStorage.last_active_load_number = data[i].load_number;
-														alert('6');
-														//localStorage.first_trace = 'notification_ready';
-														if(localStorage.ready == 'yes'){
 															alert('7');
 															alert(data[i].idts_load+'-'+data[i].load_number);
-															  //active_shipments_load(data[i].idts_load,data[i].load_number);
-															};
-														//active_shipments_load_not(data[i].idts_load,data[i].load_number);
 													};
+												};
+												if(localStorage.ready == 'yes'){
+												     active_shipments_load(localStorage.load_id_bol,localStorage.last_active_load_number);
 												};
 												//localStorage.test2 = 1;
 												$('#validate_').html(1);
-												//localStorage.bol = 1;
-												//alert('2call:'+$('#load_hid').html());
 										},
 									 error: function(data){},
 										});

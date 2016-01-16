@@ -159,16 +159,16 @@
 									  localStorage.tobecontinued = 1;
 									  //alert('localStorage.finish ==0');
 									  //localStorage.first_trace = 'device_ready';
-									  alert('local finish 0');
+									  //alert('local finish 0');
 									  active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
 									  $.mobile.loading("hide");
 								}else{
 									if(localStorage.notification == 1){
-										alert('local notification 1');
+										//alert('local notification 1');
 										// active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
 										 $.mobile.loading("hide");
 										}else{
-											alert('local notification 0');
+											//alert('local notification 0');
 										  localStorage.tobecontinued = 0;
 										  location.href='#page1_1';
 										  $.mobile.loading("hide");
@@ -315,14 +315,14 @@
 											console.log(data);
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
-													alert('userid'+localStorage.user_id);
+													//alert('userid'+localStorage.user_id);
 													    
 														localStorage.load_id_bol = data[i].idts_load;
 														localStorage.last_active_load = localStorage.load_id_bol;
 														$('#load_number_hid').html(data[i].load_number);
 														localStorage.last_active_load_number = data[i].load_number;
-															alert('7');
-															alert(data[i].idts_load+'-'+data[i].load_number);
+															//alert('7');
+															//alert(data[i].idts_load+'-'+data[i].load_number);
 													};
 												};
 												//if(localStorage.ready == 'yes'){
@@ -1777,7 +1777,7 @@ $('#div_document_name').click(function(){
 																//alert('Im not sending the trace');
 																}
 													//WARNING
-														 },30000);
+														 },300000);
 													}
 											}		
 					};
@@ -1803,7 +1803,7 @@ $('#div_document_name').click(function(){
 							  //alert('Im not sending the trace2');
 						//	}
 				       //WARNING
-					 },30000);
+					 },300000);
 			}
 		///----------------------------------///
 		<!-- MESSAGE TO DASHBOARD OPTIONS -->
@@ -2135,7 +2135,7 @@ localStorage.comma = "'";
 							   //if(trace_mark == 2){}else{
 							      localStorage.double_trace_mark = 1;
 							      trace_load2();
-								  alert('I got inside trace 1');
+								 // alert('I got inside trace 1');
 								  //alert('tobecontinued == 1')
 								  localStorage.tobecontinued = 0;
 							   //};
@@ -2205,16 +2205,16 @@ localStorage.comma = "'";
 							//-----------move to page 2_5 if single bol -------------//
 							if(localStorage.active_shipment_counter == '1'){
 												if(localStorage.inactive == 1){
-													alert('local inactive 1');
+													//alert('local inactive 1');
 													}else{
-														alert('local inactive 1 ??');
+														//alert('local inactive 1 ??');
 														if(localStorage.load_hid == localStorage.load_hid_2){
-															alert('local load_hid & load_hid2');
+															//alert('local load_hid & load_hid2');
 															}else{
 														   // alert('trace_load activated')
 														   if(localStorage.double_trace_mark == 1){}else{
 															     trace_load();
-																 alert('I got inside trace 2');
+																 //alert('I got inside trace 2');
 														   }
 														}
 													}
@@ -3193,7 +3193,7 @@ $('#page2').on('pageshow',function(e,data){
 						   // alert('trace_load activated')
 						    if(localStorage.double_trace_mark == 1){}else{
 								 trace_load();
-								 alert('I got inside trace 3');
+								 //alert('I got inside trace 3');
 							};
 						}
 					}

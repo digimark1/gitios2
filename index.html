@@ -304,6 +304,7 @@
 							if (load_sub == "New load #"){
 								var load_sub_split = load_str.split("-");
 								var load_number = parseFloat(load_sub_split[0].substring(10));
+								localStorage.notification = 1;
 								//alert(load_push);
 									 $.ajax({
 									 type: 'POST',
@@ -315,7 +316,7 @@
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
 													alert('userid'+localStorage.user_id);
-													    localStorage.notification = 1;
+													    
 														localStorage.load_id_bol = data[i].idts_load;
 														localStorage.last_active_load = localStorage.load_id_bol;
 														$('#load_number_hid').html(data[i].load_number);

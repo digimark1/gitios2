@@ -131,12 +131,8 @@
 		
 		function onResume(){
 			 setTimeout(function() {
-				alert('resume');
-				if(localStorage.new_load == 1){
-					alert('new_load ');
-							active_load(localStorage.user_id);
-							localStorage.new_load = 0;
-				};
+					//alert('new_load ');
+							active_load2(localStorage.user_id);
 			 }, 0);
 		};
     // onSuccess Geolocation
@@ -2108,6 +2104,116 @@ $('#div_document_name').click(function(){
                                 console.log(data);
 								navigator.notification.alert(
 															  'There was an error with active loads 3',
+															  alertCallback,
+															  'Smith TracknGo',
+															  'Ok');
+                            }})
+				};
+				
+        function active_load2(id_driver){
+			                  var active_shipment;// Active shipments counter variable. //
+							  var shipment_number; // Number of shipments, active or inactive.
+							 $.ajax({
+							 type: 'POST',
+							 async: false,
+							 dataType: 'json',
+							 url: ''+localStorage.base_url+'/load/app_get_load_by_driver/'+id_driver,
+							success: function(data){
+											console.log(data);
+											active_loads_number = 0;
+											$("#lol_item").html("");
+											$("#lol_item").append('<tr><th width="33%"> DATE </th><th width="33%"> LOAD # </th><th width="33%"> SHIPMENTS </th></tr>');
+											$("#lol_item_inactive").html("");
+											$("#lol_item_inactive").append('<tr><th width="33%"> DATE </th><th width="33%"> LOAD # </th><th width="33%"> SHIPMENTS </th></tr>');
+											if(localStorage.inactive == 1){
+												     $('#lol_item').hide();
+												}else{
+													 $("#lol_item_inactive").hide();
+													}
+											for(i=0;i<data.length;i++){
+												
+												if((data[i].sw == 1)&&(data[i].tender == 1)){
+													
+													//-----Check  for every signature in the load to set active or inactive status.-----//
+													$.ajax({
+														type:'POST',
+														dataType:'json',
+														url:''+localStorage.base_url+'/load/app_get_shipments_by_load/'+data[i].idts_load,
+														async:false,
+														success: function(data_s){
+															active_shipment = 0;
+															shipment_number = 0;
+																for(j=0;j<data_s.length;j++){
+																	  if(data_s[j].destination_sign == '0'){
+																			  active_shipment++;
+																			  shipment_number++;
+																		  }else{
+																			  shipment_number++;
+																			  };
+																	};
+																$.mobile.loading("hide");
+																localStorage.active_shipment = active_shipment;
+																console.log(data_s);
+															},
+														error: function(data_s){
+															console.log(data_s);
+															}
+														});
+														if(active_shipment >= 1){
+															//alert('there is one active');
+																active_loads_number++; //---- number of active loads. Check if there is any active. ----//
+																$("#lol_item").append('<tr><td>'+data[i].date_created+'</td><td><a href="#" style="color: red;" class="" onclick="active_shipments_load('+data[i].idts_load+','+data[i].load_number+')"><h3>'+data[i].load_number+'</h3></a></td><td align="center">'+shipment_number+'</td></tr>');
+															}else{
+														//Change load detals. Just to see old BOL's
+																$("#lol_item_inactive").append('<tr><td>'+data[i].date_created+'</td><td><a href="#" style="color: black;" class="" onclick="inactive_shipments_load('+data[i].idts_load+','+data[i].load_number+')"><h3>'+data[i].load_number+'</h3></a></td><td align="center">'+shipment_number+'</td></tr>');
+																}
+													} 
+												}
+												//localStorage.active_shipment = active_shipment;
+											$('#loading_loads').html(""); //--Delete Loading Gif when all loads are checked. -----/
+											$.mobile.loading("hide");
+											
+									//-------------- SEND REGISTER ID TO DATABASE --- ANDROID CLOUD MESSAGING --- 
+										//--------------------
+										//---trace load adjustments----
+									if(active_loads_number >= 1){
+										      $('#active_ld').attr('src','css/active_active.png');
+				                              $('#history_ld').attr('src','css/history_inactive.png');
+											  $('#lol_item_inactive').hide();
+											  $('#lol_item').show();
+										// Start interval, just when new one arrives (or there is one active) //
+											if(localStorage.location_mark == 1){
+												}else{
+													//alert('location 60 seconds');
+													 driver_location_interval = setInterval(function(){
+															navigator.geolocation.getCurrentPosition(onSuccess, onError);
+																  function onSuccess(position) {
+																	 var x = position.coords.latitude;
+																	 var y = position.coords.longitude;
+																	 send_location(x,y);
+																	}
+																   function onError(error) {
+																	  navigator.notification.alert(
+																		  'GPS access error',
+																		  alertCallback,
+																		  'Smith TracknGo',
+																		  'Ok');
+																	}
+														 },60000);
+													localStorage.location_mark = 1;
+												}
+										}else{
+											  $('#active_ld').attr('src','css/active_inactive.png');
+				                              $('#history_ld').attr('src','css/history_active.png');
+											  $('#lol_item_inactive').show();
+											  $('#lol_item').hide();
+											};
+		 // Changed from 20 Seconds to 40 seconds Aprox. //20151008 changed to 60
+										},
+                            error: function(data){
+                                console.log(data);
+								navigator.notification.alert(
+															  'There was an error with active loads 33',
 															  alertCallback,
 															  'Smith TracknGo',
 															  'Ok');

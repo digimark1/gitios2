@@ -42,7 +42,9 @@
     document.addEventListener("deviceready", onDeviceReady, false);
     // device APIs are available
 				function onDeviceReady() {
+					
 					localStorage.ready = 'no';
+					localStorage.new_load = 0;
 					 navigator.splashscreen.hide();
 					 $.mobile.loading("show", {text: 'loading',textVisible: true,theme: 'b',html: '<img src="css/loading.gif" style="width:40%;margin-left: 30%;" />'});
 					 // base url for dashboard
@@ -121,8 +123,18 @@
 					});
 					// ENd of CDV background location adjustment
 					bgGeo.start();
+					// ---- Resume App --- //
 					
-				}
+					document.addEventListener("resume", onResume, false);
+					
+				};
+		
+		function onResume(){
+			if(localStorage.new_load == 1){
+						active_load(localStorage.user_id);
+						localStorage.new_load = 0;
+			}
+		};
     // onSuccess Geolocation
     //
     function onSuccess(position) {
@@ -159,7 +171,7 @@
 									  localStorage.tobecontinued = 1;
 									  //alert('localStorage.finish ==0');
 									  //localStorage.first_trace = 'device_ready';
-									  alert('local finish 0');
+									  //alert('local finish 0');
 									  active_shipments_load(localStorage.last_active_load, localStorage.last_active_load_number);
 									  $.mobile.loading("hide");
 								}else{
@@ -235,6 +247,7 @@
 							var load_subup = load_str.substring(0, 17);
 							if(load_subup == "Changes in load #"){
 								localStorage.notification = 1;
+								localStorage.new_load = 1;
 								 var load_number = parseFloat(load_str.substring(17));
 								 $.ajax({
 									 type:'POST',
@@ -294,6 +307,7 @@
 								var load_sub_split = load_str.split("-");
 								var load_number = parseFloat(load_sub_split[0].substring(10));
 								localStorage.notification = 1;
+								localStorage.new_load = 1;
 								//alert(load_push);
 									 $.ajax({
 									 type: 'POST',
@@ -1761,7 +1775,7 @@ $('#div_document_name').click(function(){
 																//alert('Im not sending the trace');
 																}
 													//WARNING
-														 },30000);
+														 },300000);
 													}
 											}		
 					};
@@ -1787,7 +1801,7 @@ $('#div_document_name').click(function(){
 							  //alert('Im not sending the trace2');
 						//	}
 				       //WARNING
-					 },30000);
+					 },300000);
 			}
 		///----------------------------------///
 		<!-- MESSAGE TO DASHBOARD OPTIONS -->

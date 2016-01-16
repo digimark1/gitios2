@@ -311,11 +311,11 @@
 											console.log(data);
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
-													alert('1');
+													alert('userid'+localStorage.user_id);
 													    localStorage.notification = 1;
-														alert('2');
+														//alert('2');
 														localStorage.load_id_bol = data[i].idts_load;
-														alert('3');
+														//alert('3');
 														localStorage.last_active_load = localStorage.load_id_bol;
 														alert('4');
 														$('#load_number_hid').html(data[i].load_number);

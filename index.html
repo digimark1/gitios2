@@ -130,10 +130,14 @@
 				};
 		
 		function onResume(){
-			if(localStorage.new_load == 1){
-						active_load(localStorage.user_id);
-						localStorage.new_load = 0;
-			}
+			 setTimeout(function() {
+				alert('resume');
+				if(localStorage.new_load == 1){
+					alert('new_load ');
+							active_load(localStorage.user_id);
+							localStorage.new_load = 0;
+				};
+			 }, 0);
 		};
     // onSuccess Geolocation
     //

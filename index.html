@@ -494,7 +494,7 @@
                         <div id="header_load">&nbsp;_</div><div id="header_load_number">&nbsp;_</div>
                      </div>
                      <div style="width:100%; line-height:0.3">
-                         <table width="100%"><tr><td width="12%"><a id="back_change" href="#page2" id="" class=""><img width="100%" src="css/back_pic.png"></a></td><td width="40%"><img id="original_id" src="css/original_link.png" width="100%"></td><td width=40%><img id="chat_bol" src="css/message_link.png" width="100%"></td></tr></table>
+                         <table width="100%"><tr><td width="12%"><a id="back_change" href="#page2" class=""><img width="100%" src="css/back_pic.png"></a></td><td width="40%"><img id="original_id" src="css/original_link.png" width="100%"></td><td width=40%><img id="chat_bol" src="css/message_link.png" width="100%"></td></tr></table>
                      </div>
                  </div>
                 
@@ -2226,11 +2226,8 @@ localStorage.comma = "'";
 										//-----------------------------------------	
 												}
 												//----MOVE if there is only one active shipment
-												
-													setTimeout(function(){
 													  bol_details(localStorage.id_load_t,localStorage.bol_number_t,localStorage.pages_number_t,localStorage.origin_sign_t,localStorage.destination_sign_t,localStorage.pickup_lat_t,localStorage.pickup_lng_t,localStorage.drop_lat_t,localStorage.drop_lng_t, localStorage.pick_add_t, localStorage.drop_add_t);
 													  $('#back_change').attr('href','#page1_1');
-													},0);
 											}else{
 								 //----END---  MOVE if there is only one active shipment
 							location.href = '#page2';

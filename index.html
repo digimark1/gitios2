@@ -299,12 +299,6 @@
 							 
 							 //---- LOAD #
 							if (load_sub == "New load #"){
-								//localStorage.start ="";
-								//localStorage.finish = 0;
-								//localStorage.inactive = 0;
-								//localStorage.load_hid ="";
-								//localStorage.load_hid = 1;
-								$("#image_source").attr('src','css/loading2.gif');
 								var load_sub_split = load_str.split("-");
 								var load_number = parseFloat(load_sub_split[0].substring(10));
 								//alert(load_push);
@@ -317,13 +311,21 @@
 											console.log(data);
 											for(i=0;i<data.length;i++){
 												if (data[i].load_number == load_number){
+													alert('1');
 													    localStorage.notification = 1;
+														alert('2');
 														localStorage.load_id_bol = data[i].idts_load;
+														alert('3');
 														localStorage.last_active_load = localStorage.load_id_bol;
+														alert('4');
 														$('#load_number_hid').html(data[i].load_number);
+														alert('5');
 														localStorage.last_active_load_number = data[i].load_number;
-														localStorage.first_trace = 'notification_ready';
+														alert('6');
+														//localStorage.first_trace = 'notification_ready';
 														if(localStorage.ready == 'yes'){
+															alert('7');
+															alert(data[i].idts_load+'-'+data[i].load_number);
 															  active_shipments_load(data[i].idts_load,data[i].load_number);
 															};
 														//active_shipments_load_not(data[i].idts_load,data[i].load_number);

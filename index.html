@@ -262,7 +262,15 @@
 												  $('#load_number_hid').html(data[i].load_number);
 												  };
 											  }
-											  active_shipments_load(localStorage.load_id_bol,localStorage.load_number);
+											  
+											  function ChangeLoadCallback(){
+													 active_shipments_load(localStorage.load_id_bol,localStorage.load_number);
+													};
+														navigator.notification.alert(
+															  'Changes in load #'+localStorage.load_number,
+															  ChangeLoadCallback,
+															  'Smith TracknGo',
+															  'Ok');
 										 },
 									 error: function(data){},
 									 });

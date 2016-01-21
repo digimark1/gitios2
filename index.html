@@ -122,13 +122,13 @@
 							//localStorage.load_id_trace = localStorage.load_id_bol;
 								$.ajax({
 									type: 'POST',
-									async: false,
+									//async: false,
 									data: {user_lat: lati, user_long: longi, load_id:localStorage.load_id_trace},
 									url: ''+localStorage.save_url+'/save_trace.php',
 									success: function(data){
 										console.log(data);
 									   // alert('Your location was successfully added');
-									   //bgGeo.finish();
+									   bgGeo.finish();
 									},
 									error: function(){
 										console.log(data);

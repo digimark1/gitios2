@@ -141,10 +141,10 @@
 	//l-ocalStorage.trace = 1;
 	
 	//----End of background settings	
-	/*cordova.plugins.backgroundMode.setDefaults({
-		});*/
+	cordova.plugins.backgroundMode.setDefaults({
+		});
 		
-	//cordova.plugins.backgroundMode.enable();
+	cordova.plugins.backgroundMode.enable();
 	
         var element = document.getElementById('geolocation');
         element.innerHTML = '<input type="hidden" id="latitude" name="latitude" value="'           + position.coords.latitude              + '"  /><br />' +
@@ -881,8 +881,7 @@ function consignee_take_pic(){
 																						//-/-----/-//
 																						localStorage.trace = 0;//$('#localstorage_trace').html(0);
 																						clearInterval(location_trace_interval);
-																						clearInterval(driver_location_interval);
-																						//cordova.plugins.backgroundMode.disable();
+																						cordova.plugins.backgroundMode.disable();
 																						//--ACHTUNG--//
 																						//bgGeo.stop();
 																					};
@@ -1597,8 +1596,7 @@ $('#div_document_name').click(function(){
 																			//-/-----/-//
 																			localStorage.trace = 0;//$('#localstorage_trace').html(0);
 																			clearInterval(location_trace_interval);
-																			clearInterval(driver_location_interval);
-																			//cordova.plugins.backgroundMode.disable();
+																			cordova.plugins.backgroundMode.disable();
 																			//--ACHTUNG--//bgGeo.stop();
 																			//alert('unsigned_shipments=0');
 																		};
@@ -2216,7 +2214,6 @@ $('#div_document_name').click(function(){
 				                              $('#history_ld').attr('src','css/history_active.png');
 											  $('#lol_item_inactive').show();
 											  $('#lol_item').hide();
-											  clearInterval(driver_location_interval);
 											};
 		 // Changed from 20 Seconds to 40 seconds Aprox. //20151008 changed to 60
 										},
@@ -2908,7 +2905,7 @@ function update_shipments_load(load_id){
 			});
 		
 		
-		//cordova.plugins.backgroundMode.enable();
+		cordova.plugins.backgroundMode.enable();
 		//$('#msg_hid').hide();
 		// ----- START CHAT when showing page ------//
 					start_chat();		
@@ -3074,11 +3071,10 @@ function update_shipments_load(load_id){
 									//-/-----/-//
 									localStorage.trace = 0;//$('#localstorage_trace').html(0);
 									clearInterval(location_trace_interval);
-									
+									//clearInterval(driver_location_interval);
 									//alert('location_trace_deleted_2');
-									//cordova.plugins.backgroundMode.disable();
+									cordova.plugins.backgroundMode.disable();
 									bgGeo.stop();
-									clearInterval(driver_location_interval);
 									//sigData.jSignature("reset");
 								};
 						
@@ -3299,7 +3295,7 @@ function update_shipments_load(load_id){
 	$('#page1_1').on('pageshow',function(e,data) {
 		$('#lol').css('height',(0.68*parseFloat(window.screen.height)));
 		active_load(localStorage.user_id);
-		//cordova.plugins.backgroundMode.enable();
+		cordova.plugins.backgroundMode.enable();
 		$('#back_change').attr('href','#page2');
 	    });
 		

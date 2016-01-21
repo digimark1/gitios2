@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "KT5ZDH49Y7.com.leanstaffing.trackngo"
-        version   = "1.5.6">
+        version   = "1.5.7">
 
     <name>Smith-Cargo Trackn'Go v1.4</name>
 

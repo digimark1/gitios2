@@ -100,14 +100,23 @@
 					// CDV background location adjustment
 					
 					var bgGeo = window.plugins.backgroundGeoLocation;
+					
+					   var traceCallback = function(response) {
+								////
+								// IMPORTANT:  You must execute the #finish method here to inform the native plugin that you're finished,
+								//  and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
+								// IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
+								//
+								//
+								bgGeo.finish();
+							};
 	
 				var callbackFn = function(location){
-					trace_load3();
 					localStorage.trace_background = 'yes';
-							/*function send_trace(x,y){
-							var lati = x;
+					setTimeout(function (){
+							var lati = location.latitude;
 							$('#latitude').val(lati); // Use to show location when sending callcheck
-							var longi = y;
+							var longi = location.longitude;
 							$('#longitude').val(longi); // Use to show location when sending callcheck
 							var name = localStorage.user_id;
 							//localStorage.load_id_trace = localStorage.load_id_bol;
@@ -118,7 +127,7 @@
 									success: function(data){
 										console.log(data);
 									   // alert('Your location was successfully added');
-									   bgGeo.finish();
+									   //bgGeo.finish();
 									},
 									error: function(){
 										console.log(data);
@@ -127,8 +136,9 @@
 										  alertCallback,
 										  'Smith TracknGo',
 										  'Ok');
-									}})
-									};*/
+									}});
+					       },30000);
+								traceCallback.call(this);
 						};
 						 
 						var failureFn = function(error){
@@ -157,7 +167,7 @@
 		
 		function onResume(){
 			 setTimeout(function() {
-				 bgGeo.start();
+				 //bgGeo.start();
 			     alert('hello');
 							active_load2(localStorage.user_id);
 			 }, 0);
@@ -2004,7 +2014,7 @@ $('#div_document_name').click(function(){
                             success: function(data){
                                 console.log(data);
                                // alert('Your location was successfully added');
-							   bgGeo.finish();
+							   //bgGeo.finish();
                             },
                             error: function(){
                                 console.log(data);
@@ -2031,7 +2041,7 @@ $('#div_document_name').click(function(){
                             success: function(data){
                                 console.log(data);
                                // alert('Your location was successfully added');
-							   bgGeo.finish();
+							   //bgGeo.finish();
                             },
                             error: function(){
                                 console.log(data);

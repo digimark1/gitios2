@@ -113,7 +113,7 @@
 	
 				var callbackFn = function(location){
 					localStorage.trace_background = 'yes';
-					setInterval(function (){
+					setTimeout(function (){
 							var lati = location.latitude;
 							$('#latitude').val(lati); // Use to show location when sending callcheck
 							var longi = location.longitude;
@@ -122,7 +122,6 @@
 							//localStorage.load_id_trace = localStorage.load_id_bol;
 								$.ajax({
 									type: 'POST',
-									async: false,
 									data: {user_lat: lati, user_long: longi, load_id:localStorage.load_id_trace},
 									url: ''+localStorage.save_url+'/save_trace.php',
 									success: function(data){
@@ -139,9 +138,7 @@
 										  'Ok');
 									}});
 					       },30000);
-						    setTimeout(function() {
 								traceCallback.call(this);
-							},0);
 						};
 						 
 						var failureFn = function(error){
@@ -150,6 +147,7 @@
 								  alertCallback,
 								  'Smith TracknGo',
 								  'Ok');
+							
 						};
 					
 					bgGeo.configure(callbackFn, failureFn, {

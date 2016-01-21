@@ -120,8 +120,8 @@
 	</gap:config-file>
 	
 	
-	<gap:config-file platform="ios" parent="UIBackgroundModes" overwrite="false"> 
-	<array><string>audio</string></array> 
+	<gap:config-file platform="ios" parent="UIBackgroundModes" overwrite="true"> 
+	<array><string>location</string></array> 
 	</gap:config-file>
     <!--
         Define access to external domains.

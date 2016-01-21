@@ -2965,7 +2965,7 @@ function update_shipments_load(load_id){
 						message_signature(localStorage.load_id_bol,1,localStorage.bol_number);
 						//sigData.jSignature("reset");
 						  var d = new Date();
-						  $('#shipper_photos').append('<div><a style="color:blue; font-weight:500" href="#" onClick="view_picture_shipper('+localStorage.load_id_bol+','+localStorage.comma+localStorage.bol_number+localStorage.comma+','+localStorage.shipper_counter+')">-'+(d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear()+'_'+localStorage.shipper_counter+'</a></div>');
+						  $('#shipper_photos').append('<div><a style="color:blue; font-weight:500" href="#" onClick="view_picture_shipper('+localStorage.load_id_bol+','+localStorage.comma+localStorage.bol_number+localStorage.comma+','+localStorage.shipper_counter+')">-'+('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+(d.getDate())).slice(-2)+'/'+d.getFullYear()+'_'+localStorage.shipper_counter+'</a></div>');
 						  $('#expand_shipper').html('<b>&nbsp; - </b>Shipper BOL');
 						  $('#shipper_photos').show();
 						  localStorage.shipper_counter = parseFloat(localStorage.shipper_counter) + 1;
@@ -3029,7 +3029,7 @@ function update_shipments_load(load_id){
 						$('#sig_button2').html('<img src="css/button3s.png" width="100%"/>');
 						message_signature(localStorage.load_id_bol,2,localStorage.bol_number);
 						var d = new Date()
-						 $('#consignee_photos').append('<div><a style="color:blue; font-weight:500" href="#" onClick="view_picture_consignee('+localStorage.load_id_bol+','+localStorage.comma+localStorage.bol_number+localStorage.comma+','+localStorage.consignee_counter+')">-'+(d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear()+'_'+localStorage.consignee_counter+'</a></div>');
+						 $('#consignee_photos').append('<div><a style="color:blue; font-weight:500" href="#" onClick="view_picture_consignee('+localStorage.load_id_bol+','+localStorage.comma+localStorage.bol_number+localStorage.comma+','+localStorage.consignee_counter+')">-'+('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+(d.getDate())).slice(-2)+'/'+d.getFullYear()+'_'+localStorage.consignee_counter+'</a></div>');
 						 $('#expand_consignee').html('<b>&nbsp; - </b>Consignee BOL');
 						 $('#consignee_photos').show();
 						 localStorage.consignee_counter = parseFloat(localStorage.consignee_counter) + 1;

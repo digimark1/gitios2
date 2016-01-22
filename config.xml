@@ -76,6 +76,7 @@
 	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
 	<gap:plugin name="org.apache.cordova.file" version="1.3.3" />
 	<gap:plugin name="org.apache.cordova.file-transfer" version="0.5.0" />
+	<gap:plugin name="nl.x-services.plugins.backgroundaudio"/>
 	<!--<gap:plugin name="com.chanthu.evri.gcs-file-transfer" />-->
 	<!-- <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" version="1.2.0" /> -->
 

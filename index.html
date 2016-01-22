@@ -152,8 +152,9 @@
                             '<input type="hidden" id="longitude" name="longitude" value="'          + position.coords.longitude             + '" /><br />' ;
 	        // Variables for sound feature
 			 localStorage.sound = 0;
-			 var audioElement = document.createElement('audio');
-             audioElement.setAttribute('src', 'css/beep.mp3');
+			 //var audioElement = document.createElement('audio');
+			 var audioElement = new Media('css/beep.mp3');
+             //audioElement.setAttribute('src', 'css/beep.mp3');
 			 $('#sound_button').attr('src','css/sound_off.png');
 			 			 var interval;
 			 //move to device ready

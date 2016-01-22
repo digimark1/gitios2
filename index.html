@@ -16,6 +16,7 @@
 		var myScroll_message;
 		function loaded () {
 			localStorage.ready = 'no';
+			
 			//localStorage.second_trace = 'friend';
 		myScroll = new iScroll('bol_image', {
 				zoom: true,
@@ -42,7 +43,7 @@
     document.addEventListener("deviceready", onDeviceReady, false);
     // device APIs are available
 				function onDeviceReady() {
-					
+					localStorage.sound = 0;
 					localStorage.ready = 'no';
 					localStorage.new_load = 0;
 					 navigator.splashscreen.hide();
@@ -149,7 +150,12 @@
         var element = document.getElementById('geolocation');
         element.innerHTML = '<input type="hidden" id="latitude" name="latitude" value="'           + position.coords.latitude              + '"  /><br />' +
                             '<input type="hidden" id="longitude" name="longitude" value="'          + position.coords.longitude             + '" /><br />' ;
-	
+	        // Variables for sound feature
+			 localStorage.sound = 0;
+			 var audioElement = document.createElement('audio');
+             audioElement.setAttribute('src', 'css/beep.mp3');
+			 $('#sound_button').attr('src','css/sound_off.png');
+			//-----------------//-------//
 				if(!localStorage.user_id){
 					//localStorage.ready = 'yes';
 					location.href='#page1';
@@ -445,11 +451,42 @@
                         <table id="lol_item_inactive"></table>
                         <div id="loading_loads"><!--<img src="css/loading.gif" style="width:20%;margin-left:40%;" />--></div>
                      </div>
+                     <div data-role="footer" data-position="fixed" style="background-color: rgba(0, 255, 255, 0);border-color: rgba(0, 255, 255, 0);"> 
+                       <table style="width: 100%; border-collapse:collapse">
+                            <tr style="">
+                                <td style="width: 25%;text-align: left;"><div><img id="sound_button" src="css/sound_off.png" style="width:50%;margin-left:0%;" /></div></td>
+                                <td style="width: 25%;"><div></div></td>
+								<td style="width: 25%;"><div></div></td>
+                                <td style="width: 25%;"><div></div></td>
+                            </tr>
+                       </table>
+                </div>
              <!-- register id for push notifications -->
                <div id="reg_id" hidden></div>
 
     </div>
-    
+    <script>
+			 var interval;
+			 //move to device ready
+		$('#sound_button').click(function(){
+			//move the first 2 lines
+			
+			if(localStorage.sound == 0){
+				   interval = setInterval(function(){
+					  audioElement.play();
+					},2000);
+					//alert('1');
+					$('#sound_button').attr('src','css/sound.png');
+					localStorage.sound = 1;
+				}else{
+					 audioElement.pause();
+					  //alert('1');
+					 $('#sound_button').attr('src','css/sound_off.png');
+			         clearInterval(interval);
+					 localStorage.sound = 0;
+					};
+			});  
+	</script>
     <!-- List of SHIPMENTS -->
     
     <div data-role="page" id="page2">

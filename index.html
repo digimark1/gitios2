@@ -162,8 +162,8 @@
 			
 			if(localStorage.sound == 0){
 				   interval = setInterval(function(){
-					  audioElement.play();
-					  alert('1');
+					  audioElement.play({ playAudioWhenScreenIsLocked : true }); ;
+					  //alert('1');
 					},2000);
 					
 					$('#sound_button').attr('src','css/sound.png');

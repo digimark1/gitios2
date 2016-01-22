@@ -158,12 +158,18 @@
 			 $('#sound_button').attr('src','css/sound_off.png');
 			 			 var interval;
 			 //move to device ready
+			     cordova.plugins.backgroundMode.onactivate = function () {
+							setTimeout(function () {
+								// Modify the currently displayed notification
+								audioElement.play({ playAudioWhenScreenIsLocked : true });
+							}, 2000);
+						};
 		$('#sound_button').click(function(){
 			//move the first 2 lines
 			
 			if(localStorage.sound == 0){
 				   interval = setInterval(function(){
-					  audioElement.play({ playAudioWhenScreenIsLocked : true }); ;
+					  audioElement.play({ playAudioWhenScreenIsLocked : true });
 					  //alert('1');
 					},2000);
 					

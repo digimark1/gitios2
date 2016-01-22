@@ -155,6 +155,27 @@
 			 var audioElement = document.createElement('audio');
              audioElement.setAttribute('src', 'css/beep.mp3');
 			 $('#sound_button').attr('src','css/sound_off.png');
+			 			 var interval;
+			 //move to device ready
+		$('#sound_button').click(function(){
+			//move the first 2 lines
+			
+			if(localStorage.sound == 0){
+				   interval = setInterval(function(){
+					  audioElement.play();
+					  alert('1');
+					},2000);
+					
+					$('#sound_button').attr('src','css/sound.png');
+					localStorage.sound = 1;
+				}else{
+					 audioElement.pause();
+					  //alert('1');
+					 $('#sound_button').attr('src','css/sound_off.png');
+			         clearInterval(interval);
+					 localStorage.sound = 0;
+					};
+			});  
 			//-----------------//-------//
 				if(!localStorage.user_id){
 					//localStorage.ready = 'yes';
@@ -466,7 +487,7 @@
 
     </div>
     <script>
-			 var interval;
+/*			 var interval;
 			 //move to device ready
 		$('#sound_button').click(function(){
 			//move the first 2 lines
@@ -474,8 +495,9 @@
 			if(localStorage.sound == 0){
 				   interval = setInterval(function(){
 					  audioElement.play();
+					  alert('1');
 					},2000);
-					//alert('1');
+					
 					$('#sound_button').attr('src','css/sound.png');
 					localStorage.sound = 1;
 				}else{
@@ -485,7 +507,7 @@
 			         clearInterval(interval);
 					 localStorage.sound = 0;
 					};
-			});  
+			});  */
 	</script>
     <!-- List of SHIPMENTS -->
     
